@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waqas Ahmed — Software Engineer</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <!-- ═══════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════ -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <span class="brand-bracket">&lt;</span>waqas.ahmed<span
+            class="brand-bracket"
+            >/&gt;</span
+          >
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+          <ul class="navbar-nav gap-1">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">Experience</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#education">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+    <section id="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <!-- Left: Text -->
+          <div class="col-lg-6">
+            <span class="hero-tag">Available for opportunities</span>
+
+            <h1 class="hero-name">Waqas<br />Ahmed</h1>
+
+            <p class="hero-subtitle">
+              Backend Developer
+              <span class="sep">|</span>
+              Node.js &amp; .NET
+              <span class="sep">|</span>
+              Karachi, PK
+            </p>
+
+            <p class="hero-desc">
+              I build secure, scalable web applications and RESTful APIs using
+              Node.js / Express.js and ASP.NET Core. Currently contributing to
+              enterprise-level development at Integration Xperts through the
+              Future Leaders Program.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#projects" class="btn-primary-custom">View Projects</a>
+              <a href="#contact" class="btn-outline-custom">Get in Touch</a>
+            </div>
+
+            <div class="hero-socials">
+              <a
+                href="https://github.com/waqasahmed-01/"
+                target="_blank"
+                class="social-link"
+                title="GitHub"
+              >
+                <i class="bi bi-github"></i>
+              </a>
+              <a
+                href="https://linkedin.com/in/waqasahmed10/"
+                target="_blank"
+                class="social-link"
+                title="LinkedIn"
+              >
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a
+                href="mailto:connect.waqasahmed@gmail.com"
+                class="social-link"
+                title="Email"
+              >
+                <i class="bi bi-envelope"></i>
+              </a>
+              <a href="tel:+923150369361" class="social-link" title="Phone">
+                <i class="bi bi-telephone"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Code Card -->
+          <div class="col-lg-6">
+            <div class="code-card">
+              <div class="code-card-bar">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
+                <span class="code-card-filename">waqas.config.js</span>
+              </div>
+              <div class="code-card-body">
+                <div>
+                  <span class="c-key">const</span>
+                  <span class="c-val">developer</span>
+                  <span class="c-muted">= {</span>
+                </div>
+                <div class="ps-4">
+                  <span class="c-key">name</span><span class="c-muted">:</span>
+                  <span class="c-str">"Waqas Ahmed"</span
+                  ><span class="c-muted">,</span>
+                </div>
+                <div class="ps-4">
+                  <span class="c-key">role</span><span class="c-muted">:</span>
+                  <span class="c-str">"Backend Developer"</span
+                  ><span class="c-muted">,</span>
+                </div>
+                <div class="ps-4">
+                  <span class="c-key">stacks</span
+                  ><span class="c-muted">: [</span>
+                </div>
+                <div class="ps-5">
+                  <span class="c-arr">"Node.js"</span
+                  ><span class="c-muted">,</span>
+                  <span class="c-arr">"Express.js"</span
+                  ><span class="c-muted">,</span>
+                </div>
+                <div class="ps-5">
+                  <span class="c-arr">"ASP.NET Core"</span
+                  ><span class="c-muted">,</span>
+                  <span class="c-arr">"MongoDB"</span>
+                </div>
+                <div class="ps-4"><span class="c-muted">],</span></div>
+                <div class="ps-4">
+                  <span class="c-key">location</span
+                  ><span class="c-muted">:</span>
+                  <span class="c-str">"Karachi, Pakistan"</span
+                  ><span class="c-muted">,</span>
+                </div>
+                <div class="ps-4">
+                  <span class="c-key">available</span
+                  ><span class="c-muted">:</span>
+                  <span class="c-val">true</span>
+                </div>
+                <div><span class="c-muted">};</span></div>
+                <br />
+                <div>
+                  <span class="c-key">module</span><span class="c-muted">.</span
+                  ><span class="c-val">exports</span>
+                  <span class="c-muted">=</span> developer<span class="c-muted"
+                    >;</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       ABOUT
+  ════════════════════════════════════════ -->
+    <section id="about">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-7 reveal">
+            <p class="section-label">About Me</p>
+            <h2 class="section-title">Who I Am</h2>
+            <div class="section-line"></div>
+
+            <div class="about-text">
+              <p>
+                I'm a backend-focused Software Engineer experienced across two
+                stacks —
+                <strong>Node.js / Express.js / MongoDB</strong> and
+                <strong>C# / ASP.NET Core / SQL Server</strong> — building
+                secure, scalable web applications and RESTful APIs.
+              </p>
+              <p>
+                Skilled in authentication &amp; authorization (JWT), database
+                integration, error handling, and deployment. I enjoy turning
+                complex backend challenges into clean, maintainable solutions.
+              </p>
+              <p>
+                Currently contributing to enterprise-level development at
+                <a
+                  href="https://integrationxperts.com"
+                  class="text-accent"
+                  target="_blank"
+                >
+                  Integration Xperts
+                </a>
+                through the Future Leaders Program, collaborating with senior
+                engineers in an Agile environment.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-5 reveal">
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="stat-item">
+                  <div class="stat-num">2+</div>
+                  <div class="stat-desc">Full-stack projects delivered</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="stat-item">
+                  <div class="stat-num">2</div>
+                  <div class="stat-desc">Backend stacks mastered</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="stat-item">
+                  <div class="stat-num">3.08</div>
+                  <div class="stat-desc">CGPA — Bachelor of CS</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="stat-item">
+                  <div class="stat-num">3+</div>
+                  <div class="stat-desc">Certifications earned</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       SKILLS
+  ════════════════════════════════════════ -->
+    <section id="skills">
+      <div class="container">
+        <p class="section-label reveal">Technical Skills</p>
+        <h2 class="section-title reveal">What I Work With</h2>
+        <div class="section-line reveal"></div>
+
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="skill-group">
+              <div class="skill-group-title">
+                <i class="bi bi-code-slash"></i> Languages
+              </div>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">C#</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="skill-group">
+              <div class="skill-group-title">
+                <i class="bi bi-server"></i> Backend
+              </div>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Express.js</span>
+              <span class="skill-tag">ASP.NET Core</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">JWT</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="skill-group">
+              <div class="skill-group-title">
+                <i class="bi bi-database"></i> Database &amp; ORM
+              </div>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Mongoose</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">SQL Server</span>
+              <span class="skill-tag">EF Core</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="skill-group">
+              <div class="skill-group-title">
+                <i class="bi bi-tools"></i> Tools &amp; Frontend
+              </div>
+              <span class="skill-tag">Git / GitHub</span>
+              <span class="skill-tag">Postman</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">HTML5 / CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       EXPERIENCE
+  ════════════════════════════════════════ -->
+    <section id="experience">
+      <div class="container">
+        <p class="section-label reveal">Experience</p>
+        <h2 class="section-title reveal">Where I've Worked</h2>
+        <div class="section-line reveal"></div>
+
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="timeline">
+              <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <p class="tl-company">Integration Xperts Pvt. Ltd.</p>
+                <p class="tl-role">
+                  Young Leader – Future Leaders Program | Backend Developer
+                </p>
+                <p class="tl-date">
+                  <i class="bi bi-calendar3"></i> May 2026 – Present
+                  &nbsp;·&nbsp; <i class="bi bi-building"></i> Customer
+                  Xperience Department
+                </p>
+                <ul class="tl-list">
+                  <li>
+                    Participating in a six-month Future Leaders Program focused
+                    on hands-on software development in an enterprise
+                    environment.
+                  </li>
+                  <li>
+                    Generated and evaluated 10+ software product ideas based on
+                    potential market use cases.
+                  </li>
+                  <li>
+                    Led design and development of a customer feedback platform
+                    from concept to deployment, collaborating with senior
+                    engineers in an Agile workflow.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       PROJECTS
+  ════════════════════════════════════════ -->
+    <section id="projects">
+      <div class="container">
+        <p class="section-label reveal">Projects</p>
+        <h2 class="section-title reveal">What I've Built</h2>
+        <div class="section-line reveal"></div>
+
+        <div class="row g-4">
+          <div class="col-md-6 reveal">
+            <div class="project-card">
+              <div class="project-icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+              <h3 class="project-title">Customer Feedback Management System</h3>
+              <p class="project-desc">
+                A full-stack web application for collecting and managing
+                customer feedback through email-based invitations with
+                time-limited secure links.
+              </p>
+              <ul class="project-bullets">
+                <li>
+                  Built admin dashboard to create feedback invitations via
+                  customer names and emails.
+                </li>
+                <li>
+                  Integrated Brevo Email API to send feedback links with a
+                  24-hour expiration period.
+                </li>
+                <li>
+                  Implemented link expiration after submission; deployed on
+                  Render and Netlify.
+                </li>
+              </ul>
+              <div class="project-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB Atlas</span>
+                <span class="tech-tag">Brevo API</span>
+                <span class="tech-tag">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 reveal">
+            <div class="project-card">
+              <div class="project-icon">
+                <i class="bi bi-box-seam"></i>
+              </div>
+              <h3 class="project-title">Food Management System</h3>
+              <p class="project-desc">
+                A full-stack platform connecting food donors with NGOs to
+                streamline and manage the food donation lifecycle end-to-end.
+              </p>
+              <ul class="project-bullets">
+                <li>
+                  Implemented JWT-based authentication and authorization for
+                  secure role-based access.
+                </li>
+                <li>
+                  Developed donation creation and acceptance workflows
+                  end-to-end.
+                </li>
+                <li>
+                  Built an admin dashboard for system-wide monitoring and
+                  management.
+                </li>
+              </ul>
+              <div class="project-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Mongoose</span>
+                <span class="tech-tag">JWT</span>
+                <span class="tech-tag">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       EDUCATION & CERTIFICATIONS
+  ════════════════════════════════════════ -->
+    <section id="education">
+      <div class="container">
+        <p class="section-label reveal">Education &amp; Certifications</p>
+        <h2 class="section-title reveal">Learning Path</h2>
+        <div class="section-line reveal"></div>
+
+        <div class="row g-5">
+          <div class="col-lg-6 reveal">
+            <h3 class="sub-heading">
+              <i class="bi bi-mortarboard"></i> Degree
+            </h3>
+            <div class="edu-card">
+              <p class="edu-degree">Bachelor of Computer Science</p>
+              <p class="edu-school">
+                Shah Abdul Latif University, Khairpur Mir's
+              </p>
+              <p class="edu-meta">2022 – 2026 &nbsp;·&nbsp; CGPA: 3.08 / 4.0</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <h3 class="sub-heading">
+              <i class="bi bi-patch-check"></i> Certifications
+            </h3>
+
+            <div class="cert-item">
+              <span class="cert-icon"><i class="bi bi-award"></i></span>
+              <span class="cert-text"
+                >Technical Domain Certificate — PITB Freelance Training Program
+                (2023)</span
+              >
+            </div>
+            <div class="cert-item">
+              <span class="cert-icon"><i class="bi bi-award"></i></span>
+              <span class="cert-text"
+                >Node.js and Express.js Certification — SimpliLearn (2025)</span
+              >
+            </div>
+            <div class="cert-item">
+              <span class="cert-icon"><i class="bi bi-trophy"></i></span>
+              <span class="cert-text"
+                >Software Expo Participation — Shah Abdul Latif University</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       CONTACT
+  ════════════════════════════════════════ -->
+    <section id="contact">
+      <div class="container">
+        <p class="section-label reveal">Contact</p>
+        <h2 class="section-title reveal">Get in Touch</h2>
+        <div class="section-line reveal"></div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-7 reveal">
+            <p class="contact-intro">
+              I'm open to backend roles, freelance projects, and collaborations.
+              Feel free to reach out — I'd love to hear from you.
+            </p>
+
+            <div class="contact-card">
+              <a
+                href="mailto:connect.waqasahmed@gmail.com"
+                class="contact-item"
+              >
+                <span class="contact-icon"><i class="bi bi-envelope"></i></span>
+                connect.waqasahmed@gmail.com
+              </a>
+              <a href="tel:+923150369361" class="contact-item">
+                <span class="contact-icon"
+                  ><i class="bi bi-telephone"></i
+                ></span>
+                +92-315-0369361
+              </a>
+              <a
+                href="https://linkedin.com/in/waqasahmed10/"
+                target="_blank"
+                class="contact-item"
+              >
+                <span class="contact-icon"><i class="bi bi-linkedin"></i></span>
+                linkedin.com/in/waqasahmed10/
+              </a>
+              <a
+                href="https://github.com/waqasahmed-01/"
+                target="_blank"
+                class="contact-item"
+              >
+                <span class="contact-icon"><i class="bi bi-github"></i></span>
+                github.com/waqasahmed-01/
+              </a>
+              <div class="contact-item no-link">
+                <span class="contact-icon"><i class="bi bi-geo-alt"></i></span>
+                Karachi, Pakistan
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+    <footer>
+      <div class="container">
+        <p>
+          Here <span class="text-accent">Waqas Ahmed</span> &nbsp;·&nbsp; &copy;
+          <span id="year"></span>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top" aria-label="Back to top">
+      <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="./main.js"></script>
+  </body>
+</html>
