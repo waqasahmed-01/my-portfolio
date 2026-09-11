@@ -72,3 +72,84 @@ window.addEventListener(
 backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+/* ─────────────────────────────────────────────────────
+   6. LIGHT / DARK MODE TOGGLE
+───────────────────────────────────────────────────── */
+const themeToggle = document.getElementById("themeToggle");
+
+// Apply saved theme on page load
+const savedTheme = localStorage.getItem("theme") || "dark";
+if (savedTheme === "light") {
+  document.documentElement.setAttribute("data-theme", "light");
+  themeToggle.checked = true;
+}
+
+// Toggle on switch change
+themeToggle.addEventListener("change", () => {
+  if (themeToggle.checked) {
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    localStorage.setItem("theme", "dark");
+  }
+});
+
+/* ─────────────────────────────────────────────────────
+   7. TYPING ANIMATION
+───────────────────────────────────────────────────── */
+const typingText = document.getElementById("typing-text");
+const typingCursor = document.querySelector(".typing-cursor");
+
+const words = [
+  "Backend Developer",
+  "Node.js Engineer",
+  "API Developer",
+  ".NET Developer",
+  "Problem Solver",
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typeSpeed = 100;
+const deleteSpeed = 60;
+const pauseAfterWord = 1800;
+const pauseBeforeType = 400;
+
+function type() {
+  const currentWord = words[wordIndex];
+
+  if (isDeleting) {
+    // Remove a character
+    typingText.textContent = currentWord.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    // Add a character
+    typingText.textContent = currentWord.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  // Finished typing the word
+  if (!isDeleting && charIndex === currentWord.length) {
+    setTimeout(() => {
+      isDeleting = true;
+      type();
+    }, pauseAfterWord);
+    return;
+  }
+
+  // Finished deleting the word
+  if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+    setTimeout(type, pauseBeforeType);
+    return;
+  }
+
+  setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
+}
+
+// Start after a short delay
+setTimeout(type, 600);
