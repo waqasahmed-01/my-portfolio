@@ -74,39 +74,16 @@ backToTopBtn.addEventListener("click", () => {
 });
 
 /* ─────────────────────────────────────────────────────
-   6. LIGHT / DARK MODE TOGGLE
-───────────────────────────────────────────────────── */
-const themeToggle = document.getElementById("themeToggle");
-
-// Apply saved theme on page load
-const savedTheme = localStorage.getItem("theme") || "dark";
-if (savedTheme === "light") {
-  document.documentElement.setAttribute("data-theme", "light");
-  themeToggle.checked = true;
-}
-
-// Toggle on switch change
-themeToggle.addEventListener("change", () => {
-  if (themeToggle.checked) {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light");
-  } else {
-    document.documentElement.removeAttribute("data-theme");
-    localStorage.setItem("theme", "dark");
-  }
-});
-
-/* ─────────────────────────────────────────────────────
    7. TYPING ANIMATION
 ───────────────────────────────────────────────────── */
 const typingText = document.getElementById("typing-text");
 const typingCursor = document.querySelector(".typing-cursor");
 
 const words = [
+  "Software Engineer",
   "Backend Developer",
-  "Node.js Engineer",
-  "API Developer",
-  ".NET Developer",
+  "Node.js & ASP.NET Developer",
+  "REST API Engineer",
   "Problem Solver",
 ];
 
