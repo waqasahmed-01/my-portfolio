@@ -1,132 +1,163 @@
-// SET CURRENT YEAR IN FOOTER
+// PORTFOLIO — Waqas Ahmed | main.js
+(() => {
+  "use strict";
 
-document.getElementById("year").textContent = new Date().getFullYear();
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
-// ACTIVE NAV LINK ON SCROLL
-// Highlights the nav item matching the visible section.
+  // Footer year
+  const year = $("#year");
+  if (year) year.textContent = new Date().getFullYear();
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-link");
+  // Active nav link on scroll
+  const navLinks = $$(".nav-link");
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((l) => l.classList.remove("active"));
+          $(`.nav-link[href="#${entry.target.id}"]`)?.classList.add("active");
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    $$("section[id]").forEach((s) => sectionObserver.observe(s));
+  }
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+  // Close mobile menu on link click
+  const menu = $("#navMenu");
+  $$(".nav-link, .btn-nav-cta").forEach((link) =>
+    link.addEventListener("click", () => {
+      if (menu?.classList.contains("show") && window.bootstrap) {
+        bootstrap.Collapse.getOrCreateInstance(menu).hide();
+      }
+    }),
+  );
 
-      navLinks.forEach((link) => link.classList.remove("active"));
-
-      const activeLink = document.querySelector(
-        `.nav-link[href="#${entry.target.id}"]`,
-      );
-      if (activeLink) activeLink.classList.add("active");
-    });
-  },
-  {
-    rootMargin: "-40% 0px -55% 0px",
-  },
-);
-
-sections.forEach((section) => sectionObserver.observe(section));
-
-// CLOSE MOBILE MENU ON NAV LINK CLICK
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    const menu = document.getElementById("navMenu");
-    if (menu.classList.contains("show")) {
-      bootstrap.Collapse.getInstance(menu)?.hide();
-    }
-  });
-});
-
-// SCROLL REVEAL ANIMATION
-const revealElements = document.querySelectorAll(".reveal");
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target); // animate once only
-    });
-  },
-  {
-    threshold: 0.12,
-  },
-);
-
-revealElements.forEach((el) => revealObserver.observe(el));
-
-//Back To Top.
-const backToTopBtn = document.getElementById("back-to-top");
-
-window.addEventListener(
-  "scroll",
-  () => {
-    backToTopBtn.classList.toggle("show", window.scrollY > 400);
-  },
-  { passive: true },
-);
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-/* ─────────────────────────────────────────────────────
-   7. TYPING ANIMATION
-───────────────────────────────────────────────────── */
-const typingText = document.getElementById("typing-text");
-const typingCursor = document.querySelector(".typing-cursor");
-
-const words = [
-  "Software Engineer",
-  "Backend Developer",
-  "Node.js & ASP.NET Developer",
-  "REST API Engineer",
-  "Problem Solver",
-];
-
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typeSpeed = 100;
-const deleteSpeed = 60;
-const pauseAfterWord = 1800;
-const pauseBeforeType = 400;
-
-function type() {
-  const currentWord = words[wordIndex];
-
-  if (isDeleting) {
-    // Remove a character
-    typingText.textContent = currentWord.substring(0, charIndex - 1);
-    charIndex--;
+  // Scroll reveal (falls back to visible if unsupported)
+  const reveals = $$(".reveal");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 },
+    );
+    reveals.forEach((el) => revealObserver.observe(el));
   } else {
-    // Add a character
-    typingText.textContent = currentWord.substring(0, charIndex + 1);
-    charIndex++;
+    reveals.forEach((el) => el.classList.add("visible"));
   }
 
-  // Finished typing the word
-  if (!isDeleting && charIndex === currentWord.length) {
-    setTimeout(() => {
-      isDeleting = true;
-      type();
-    }, pauseAfterWord);
-    return;
+  // Back to top
+  const backToTop = $("#back-to-top");
+  window.addEventListener(
+    "scroll",
+    () => backToTop.classList.toggle("show", window.scrollY > 400),
+    { passive: true },
+  );
+  backToTop.addEventListener("click", () =>
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }),
+  );
+
+  // Toast + clipboard
+  const toast = $("#copy-toast");
+  const toastMsg = $("#toast-message");
+  let toastTimer;
+  const showToast = (msg) => {
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+  };
+
+  const copyText = async (text, label) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      showToast(`${label} copied to clipboard`);
+    } catch {
+      showToast("Copy failed — please copy manually");
+    }
+  };
+
+  // Contact cards (click + keyboard)
+  $$("[data-copy]").forEach((card) => {
+    const copy = () =>
+      copyText(card.dataset.copy, card.dataset.label || "Text");
+    card.addEventListener("click", copy);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        copy();
+      }
+    });
+  });
+
+  // Code card copy
+  $("#copy-code-btn")?.addEventListener("click", () => {
+    const body = $(".code-card-body");
+    const text = $$("div", body)
+      .map(
+        (d) =>
+          "  ".repeat(/ps-4/.test(d.className) ? 1 : 0) +
+          d.textContent.replace(/\s+/g, " ").trim(),
+      )
+      .join("\n");
+    copyText(text, "Snippet");
+  });
+
+  // Typing animation
+  const typingText = $("#typing-text");
+  const words = [
+    "Software Engineer",
+    "Backend Developer",
+    "Enterprise Applications Developer",
+    "Node.js & ASP.NET Core Developer",
+    "CRM & ERP Enthusiast",
+  ];
+
+  if (typingText) {
+    if (reduceMotion) {
+      typingText.textContent = words[0];
+    } else {
+      let w = 0,
+        c = 0,
+        deleting = false;
+      const tick = () => {
+        const word = words[w];
+        c += deleting ? -1 : 1;
+        typingText.textContent = word.substring(0, c);
+
+        if (!deleting && c === word.length) {
+          deleting = true;
+          return setTimeout(tick, 1800);
+        }
+        if (deleting && c === 0) {
+          deleting = false;
+          w = (w + 1) % words.length;
+          return setTimeout(tick, 400);
+        }
+        setTimeout(tick, deleting ? 50 : 90);
+      };
+      setTimeout(tick, 600);
+    }
   }
-
-  // Finished deleting the word
-  if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    wordIndex = (wordIndex + 1) % words.length;
-    setTimeout(type, pauseBeforeType);
-    return;
-  }
-
-  setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
-}
-
-// Start after a short delay
-setTimeout(type, 600);
+})();
